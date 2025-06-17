@@ -16,9 +16,7 @@ async function connectDB() {
             bufferCommands: false,
         };
 
-        cached.promise = mongoose.connect(`${process.env.MONGODB_URI}/jargocart`,opts).then(mongoose => {
-            return mongoose;
-        });
+        cached.promise = mongoose.connect(process.env.MONGODB_URI, opts).then((mongoose) => mongoose);
     }
     cached.conn = await cached.promise;
     return cached.conn;
